@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       currentNickName: '',
-      nickNames: ['Dima', 'Vlad', 'Alex'],
+      nickNames: [],
       messages: [],
       nicknameTo: '',
     }

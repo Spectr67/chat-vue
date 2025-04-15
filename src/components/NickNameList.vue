@@ -20,7 +20,7 @@ export default {
       :key="index"
     >
       <div class="wrap-span">
-        <span>@click"sendMassageTo"{{ nickName }}</span>
+        <span>{{ nickName }}</span>
       </div>
     </div>
   </div>

@@ -1,21 +1,24 @@
 <script>
 export default {
-  props: ['nickNameTo'],
+  props: ['currentNickname', 'pingingNickname'],
 
-  emits: ['send-message'],
+  emits: ['message-submitted'],
 
   data() {
     return {
-      message: '',
+      messageText: '',
     }
   },
 
   methods: {
     handleSendMessage() {
-      console.log(this.message)
-      if (this.message) {
-        this.$emit('send-message', this.message)
-        this.message = ''
+      if (this.messageText) {
+        const message = {
+          author: this.currentNickname,
+          text: `@${this.pingingNickname} ${this.messageText}`,
+        }
+        this.$emit('message-submitted', message)
+        this.messageText = ''
       }
     },
   },
@@ -26,8 +29,8 @@ export default {
   <div class="footer">
     <div class="wrap-send-message flex f_tile">
       <input
-        value="{{ nickNameTo }}"
-        v-model="message"
+        :value="`@${pingingNickname} ${messageText}`"
+        @input="messageText = $event.target.value"
         type="text"
         spellcheck="false"
         id="input_msg"

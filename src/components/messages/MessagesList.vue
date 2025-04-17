@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['messages', 'currentNickName'],
+  props: ['messages'],
 }
 </script>
 

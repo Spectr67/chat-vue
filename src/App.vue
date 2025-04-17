@@ -1,67 +1,69 @@
 <script>
-import Login from './components/Login.vue'
-import NickNameList from './components/NickNameList.vue'
-import ChatFlow from './components/ChatFlow.vue'
-import SendMessage from './components/SendMessage.vue'
+import NicknameSubmitter from './components/nicknames/NicknameSubmitter.vue'
+import NicknamesList from './components/nicknames/NicknamesList.vue'
+import MessagesList from './components/messages/MessagesList.vue'
+import MessageSubmitter from './components/messages/MessageSubmitter.vue'
 import UiHeader from './ui/UiHeader.vue'
 
 export default {
-  components: { Login, NickNameList, ChatFlow, SendMessage, UiHeader },
+  components: {
+    NicknameSubmitter,
+    NicknamesList,
+    MessagesList,
+    MessageSubmitter,
+    UiHeader,
+  },
 
   data() {
     return {
-      currentNickName: '',
-      nickNames: [],
+      currentNickname: '',
+      nicknames: [],
       messages: [],
-      nicknameTo: '',
+      pingingNickname: '',
     }
   },
 
-  methods: {
-    handleLogin(nickname) {
-      this.nickNames.push(nickname)
-      this.currentNickName = nickname
-
+  watch: {
+    currentNickname(newValue) {
+      if (this.nicknames.includes(newValue)) return
+      this.nicknames.push(newValue)
       this.messages.push({
         author: 'system',
-        text: `${nickname} вошел(ла) в чат.`,
+        text: `${newValue} вошел(ла) в чат.`,
       })
-    },
-
-    handleMessage(messageText) {
-      this.messages.push({
-        author: this.currentNickName,
-        text: messageText,
-      })
-    },
-
-    handleSendMassageTo(nickName) {
-      this.nickNameTo = nickName
     },
   },
 }
 </script>
 
 <template>
-  {{ currentNickName }}
+  {{ currentNickname }}
   {{ messages }}
   <div class="main flex f_centered light">
     <div class="chat">
       <UiHeader />
 
       <div class="content flex f_tile">
-        <ChatFlow :messages="messages" :currentNickName="currentNickName" />
-        <NickNameList
-          :nickNames="nickNames"
-          @sendMassageTo="handleSendMassageTo"
+        <MessagesList
+          :messages="messages"
+          :current-nickname="currentNickname"
+        />
+
+        <NicknamesList
+          :nicknames="nicknames"
+          @ping="pingingNickname = $event"
         />
       </div>
 
-      <SendMessage @send-message="handleMessage" :nickNameTo="nicknameTo" />
+      <MessageSubmitter
+        :current-nickname="currentNickname"
+        :pinging-nickname="pingingNickname"
+        @message-submitted="messages.push($event)"
+      />
 
       <input type="checkbox" id="chk_sm" />
 
-      <Login @login="handleLogin" />
+      <NicknameSubmitter @nickname-submitted="currentNickname = $event" />
     </div>
   </div>
 </template>

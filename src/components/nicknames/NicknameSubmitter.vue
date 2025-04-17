@@ -6,12 +6,12 @@ export default {
     }
   },
 
-  emits: ['login'],
+  emits: ['nickname-submitted'],
 
   methods: {
     handleClickLogin() {
       if (this.nickname) {
-        this.$emit('login', this.nickname)
+        this.$emit('nickname-submitted', this.nickname)
         this.nickname = ''
       }
     },

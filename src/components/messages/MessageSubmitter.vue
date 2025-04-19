@@ -2,7 +2,7 @@
 export default {
   props: ['currentNickname', 'pingingNickname'],
 
-  emits: ['message-submitted'],
+  emits: ['message-submitted', 'reset-pinging-nickname'],
 
   data() {
     return {
@@ -10,14 +10,21 @@ export default {
     }
   },
 
+  computed: {
+    dog() {
+      return this.pingingNickname ? '@' : ''
+    },
+  },
+
   methods: {
     handleSendMessage() {
       if (this.messageText) {
         const message = {
           author: this.currentNickname,
-          text: `@${this.pingingNickname} ${this.messageText}`,
+          text: `${this.dog}${this.pingingNickname} ${this.messageText}`,
         }
         this.$emit('message-submitted', message)
+        this.$emit('reset-pinging-nickname')
         this.messageText = ''
       }
     },
@@ -28,17 +35,20 @@ export default {
 <template>
   <div class="footer">
     <div class="wrap-send-message flex f_tile">
+      <span type="text" spellcheck="false" id="input_pinging">{{
+        dog + pingingNickname
+      }}</span>
+
       <input
-        :value="
-          pingingNickname !== ''
-            ? `@${pingingNickname} ${messageText}`
-            : messageText
-        "
-        @change="messageText = $event.target.value"
+        :value="messageText"
+        @input="messageText = $event.target.value"
+        @keydown.backspace="messageText || $emit('reset-pinging-nickname')"
+        @keydown.enter="handleSendMessage"
         type="text"
         spellcheck="false"
         id="input_msg"
       />
+
       <input
         @click="handleSendMessage"
         type="submit"

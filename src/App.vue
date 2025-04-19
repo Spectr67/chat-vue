@@ -60,6 +60,7 @@ export default {
         :current-nickname="currentNickname"
         :pinging-nickname="pingingNickname"
         @message-submitted="messages.push($event)"
+        @reset-pinging-nickname="pingingNickname = ''"
       />
 
       <input type="checkbox" id="chk_sm" />

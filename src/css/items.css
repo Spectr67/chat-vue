@@ -10,8 +10,6 @@ svg:hover {
   opacity: 75%;
 }
 
-
-
 .wrap-h {
   text-align: center;
 }
@@ -47,12 +45,12 @@ svg:hover {
   outline: none;
   color: var(--master_txt_clr);
 }
-.wrap-send-message > [type="text"] {
-  flex: 7;
+.wrap-send-message > [type='text'] {
+  /* flex: 7; */
   font-size: 22px;
   font-weight: bold;
 }
-.wrap-send-message > [type="submit"] {
+.wrap-send-message > [type='submit'] {
   font-size: 32px;
   font-weight: bold;
   cursor: pointer;

@@ -1,8 +1,8 @@
 .light.main {
-  background: url("../img/bgdust.png");
+  background: url('../img/bgdust.png');
 }
 
-.light .chat{
+.light .chat {
   border: 0;
   --master_txt_clr: hsl(180, 30%, 15%);
   color: var(--master_txt_clr);
@@ -24,7 +24,7 @@
   border: 0;
 }
 
-.light .wrap-send-message > [type="submit"] {
+.light .wrap-send-message > [type='submit'] {
   position: absolute;
   right: 25px;
   top: 0;
@@ -33,45 +33,52 @@
   text-shadow: inherit;
 }
 
-.light .wrap-send-message > [type="text"] {
+.light .wrap-send-message > [type='text'] {
   /* text-indent: 21px; */
-  padding-left: 21px;
-  padding-right: 60px;
+
   border-top: 1px solid #fffa;
   background-color: #fff4;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   text-shadow: inherit;
 }
-.light .wrap-send-message > [type="text"]:hover {
+
+#input_pinging {
+  min-width: min-content;
+  padding-left: 21px;
+  flex: none;
+  line-height: 85px;
+}
+#input_msg {
+  padding-right: 60px;
+  flex: 1;
+}
+
+.light .wrap-send-message > [type='text']:hover {
   border-top: 1px solid #fff6;
   background-color: #fff8;
 }
-.light .wrap-send-message > [type="text"]:focus {
+.light .wrap-send-message > [type='text']:focus {
   border-top: 1px solid #fff8;
   background-color: #fff6;
 }
-.light .wrap-send-message > [type="text"]:active {
+.light .wrap-send-message > [type='text']:active {
   border-top: 1px solid #fff4;
   background-color: #fffa;
 }
 
-.light .wrap-send-message > [type="submit"]:hover {
-  color: hsl(180, 30%, 45%)
+.light .wrap-send-message > [type='submit']:hover {
+  color: hsl(180, 30%, 45%);
 }
-.light .wrap-send-message > [type="submit"]:focus {
-  color: hsl(180, 30%, 30%)
+.light .wrap-send-message > [type='submit']:focus {
+  color: hsl(180, 30%, 30%);
 }
-.light .wrap-send-message > [type="submit"]:active {
-  color: hsl(180, 30%, 60%)
+.light .wrap-send-message > [type='submit']:active {
+  color: hsl(180, 30%, 60%);
 }
-
-
-
 
 .light .slide-modal {
   border: 0px solid #cfc;
 }
-
 
 .light .slide-modal .wrap-enter-button > label {
   background-color: hsl(180, 85%, 60%);
@@ -79,7 +86,6 @@
 .light .slide-modal .wrap-enter-button > label:hover {
   background-color: hsl(180, 85%, 60%);
 }
-
 
 .light .msg-line {
   display: inline-block;
@@ -107,6 +113,6 @@
   border-radius: 5px;
 }
 .light .nickname-list::-webkit-scrollbar-track,
-.light .chat-flow::-webkit-scrollbar-track{
+.light .chat-flow::-webkit-scrollbar-track {
   background-color: transparent;
 }

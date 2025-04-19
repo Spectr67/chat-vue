@@ -39,6 +39,7 @@ export default {
 <template>
   {{ currentNickname }}
   {{ messages }}
+  {{ pingingNickname }}
   <div class="main flex f_centered light">
     <div class="chat">
       <UiHeader />

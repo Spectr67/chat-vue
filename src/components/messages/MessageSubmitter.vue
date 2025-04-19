@@ -29,8 +29,12 @@ export default {
   <div class="footer">
     <div class="wrap-send-message flex f_tile">
       <input
-        :value="`@${pingingNickname} ${messageText}`"
-        @input="messageText = $event.target.value"
+        :value="
+          pingingNickname !== ''
+            ? `@${pingingNickname} ${messageText}`
+            : messageText
+        "
+        @change="messageText = $event.target.value"
         type="text"
         spellcheck="false"
         id="input_msg"

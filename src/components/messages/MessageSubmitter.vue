@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       messageText: '',
+      lastMessageText: '',
     }
   },
 
@@ -25,12 +26,16 @@ export default {
           this.messageText = ''
           return
         }
+        if (this.messageText === this.lastMessageText) {
+          return
+        }
         const message = {
           author: this.currentNickname,
           text: `${this.dog}${this.pingingNickname} ${this.messageText}`,
         }
         this.$emit('message-submitted', message)
         this.$emit('reset-pinging-nickname')
+        this.lastMessageText = this.messageText
         this.messageText = ''
       }
     },

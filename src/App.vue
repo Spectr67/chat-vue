@@ -51,6 +51,7 @@ export default {
         />
 
         <NicknamesList
+          :current-nickname="currentNickname"
           :nicknames="nicknames"
           @ping="pingingNickname = $event"
         />

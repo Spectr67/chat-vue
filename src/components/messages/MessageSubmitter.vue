@@ -1,4 +1,5 @@
 <script>
+import wordsChecker from '/Users/layz3/OneDrive/Documents/Important Stuff/Arthur/js_vue/chat-vue/src/components/WordsChecker'
 export default {
   props: ['currentNickname', 'pingingNickname'],
 
@@ -19,6 +20,11 @@ export default {
   methods: {
     handleSendMessage() {
       if (this.messageText) {
+        if (wordsChecker(this.messageText)) {
+          alert('banned world!')
+          this.messageText = ''
+          return
+        }
         const message = {
           author: this.currentNickname,
           text: `${this.dog}${this.pingingNickname} ${this.messageText}`,

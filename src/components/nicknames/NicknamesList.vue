@@ -1,30 +1,20 @@
 <script>
 export default {
-  props: ['nicknames', 'currentNickName'],
+  props: ['nicknames', 'currentNickname'],
 
   emits: ['ping'],
-
-  methods: {
-    highlightNickname(nickname) {
-      return nickname === this.currentNickname ? 'highlight' : ''
-    },
-  },
 }
 </script>
 
 <template>
   <div class="right">
-    <div
-      class="nickname-list"
-      v-for="(nickname, index) in nicknames"
-      :key="index"
-    >
+    <div class="nickname-list" v-for="nickname of nicknames" :key="nickname">
       <div
         class="wrap-span"
+        :class="{ highlight: nickname === currentNickname }"
         @click="$emit('ping', nickname)"
-        :class="highlightNickname(nickname)"
       >
-        <span>{{ nickname }}</span>
+        <span>{{ nickname }} </span>
       </div>
     </div>
   </div>

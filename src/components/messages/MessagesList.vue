@@ -1,13 +1,30 @@
 <script>
 export default {
   props: ['messages'],
+
+  watch: {
+    messages() {
+      this.scrollToBottom()
+    },
+  },
+
+  methods: {
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const container = this.$refs.messagesContainer
+        if (container) {
+          container.scrollTop = container.scrollHeight
+        }
+      })
+    },
+  },
 }
 </script>
 
 <template>
   <div class="left">
     <div class="wrap-chat-flow">
-      <div class="chat-flow" spellcheck="false">
+      <div class="chat-flow" spellcheck="false" ref="messagesContainer">
         <template v-for="(message, index) in messages" :key="index">
           <span class="msg-line">
             <b>[{{ message.author }}]:</b> {{ message.text }}

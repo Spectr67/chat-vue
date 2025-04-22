@@ -1,5 +1,6 @@
 <script>
-import wordsChecker from '/Users/layz3/OneDrive/Documents/Important Stuff/Arthur/js_vue/chat-vue/src/components/WordsChecker'
+import wordsChecker from '@/components/WordsChecker'
+
 export default {
   props: ['currentNickname', 'pingingNickname'],
 
@@ -37,7 +38,18 @@ export default {
         this.$emit('reset-pinging-nickname')
         this.lastMessageText = this.messageText
         this.messageText = ''
+
+        this.scrollToBottom()
       }
+    },
+
+    scrollToBottom() {
+      this.$nextTick(() => {
+        const container = this.$refs.messagesContainer
+        if (container) {
+          container.scrollTop = container.scrollHeight
+        }
+      })
     },
   },
 }

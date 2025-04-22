@@ -1,5 +1,5 @@
 <script>
-import wordsChecker from '/Users/layz3/OneDrive/Documents/Important Stuff/Arthur/js_vue/chat-vue/src/components/WordsChecker'
+import wordsChecker from '@/components/WordsChecker'
 export default {
   data() {
     return {
@@ -16,7 +16,6 @@ export default {
           return
         }
         if (wordsChecker(this.nickname)) {
-          alert('banned world!')
           return
         }
         this.$emit('nickname-submitted', this.nickname)

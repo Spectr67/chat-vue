@@ -11,11 +11,9 @@ const bannedWords = [
   'картофель',
 ]
 
-export default function wordsChecker(text) {
-  for (let word of bannedWords) {
-    if (text.toLowerCase().includes(word)) {
-      return true
-    }
+export default function checkWord(word) {
+  for (const bannedWord of bannedWords) {
+    if (word.toLowerCase().includes(bannedWord)) return true
   }
   return false
 }

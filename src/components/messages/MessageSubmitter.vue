@@ -1,5 +1,5 @@
 <script>
-import wordsChecker from '@/components/WordsChecker'
+import checkWord from '@/functions/checkWord'
 
 export default {
   props: ['currentNickname', 'pingingNickname'],
@@ -22,7 +22,7 @@ export default {
   methods: {
     handleSendMessage() {
       if (this.messageText) {
-        if (wordsChecker(this.messageText)) {
+        if (checkWord(this.messageText)) {
           alert('banned world!')
           this.messageText = ''
           return

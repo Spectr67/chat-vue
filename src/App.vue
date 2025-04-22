@@ -9,16 +9,17 @@ export default {
   components: {
     NicknameSubmitter,
     NicknamesList,
-    MessagesList,
     MessageSubmitter,
+    MessagesList,
     UiHeader,
   },
 
   data() {
     return {
-      currentNickname: '',
-      nicknames: [],
+      nextId: 1,
       messages: [],
+      nicknames: [],
+      currentNickname: '',
       pingingNickname: '',
     }
   },
@@ -28,9 +29,17 @@ export default {
       if (this.nicknames.includes(newValue)) return
       this.nicknames.push(newValue)
       this.messages.push({
+        id: this.nextId++,
         author: 'system',
         text: `${newValue} вошел(ла) в чат.`,
       })
+    },
+
+    nicknames: {
+      deep: true,
+      handler(newValue) {
+        console.log(newValue)
+      },
     },
   },
 }
@@ -42,7 +51,7 @@ export default {
   {{ pingingNickname }}
   <div class="main flex f_centered light">
     <div class="chat">
-      <UiHeader />
+      <UiHeader @click="nicknames.push('yo!')" />
 
       <div class="content flex f_tile">
         <MessagesList
@@ -63,8 +72,6 @@ export default {
         @message-submitted="messages.push($event)"
         @reset-pinging-nickname="pingingNickname = ''"
       />
-
-      <input type="checkbox" id="chk_sm" />
 
       <NicknameSubmitter @nickname-submitted="currentNickname = $event" />
     </div>

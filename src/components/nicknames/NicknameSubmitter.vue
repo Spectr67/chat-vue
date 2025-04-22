@@ -1,5 +1,6 @@
 <script>
-import wordsChecker from '@/components/WordsChecker'
+import checkWord from '@/functions/checkWord'
+
 export default {
   data() {
     return {
@@ -15,7 +16,7 @@ export default {
         if (this.nickname.includes(' ')) {
           return
         }
-        if (wordsChecker(this.nickname)) {
+        if (checkWord(this.nickname)) {
           return
         }
         this.$emit('nickname-submitted', this.nickname)
@@ -27,6 +28,7 @@ export default {
 </script>
 
 <template>
+  <input type="checkbox" id="chk_sm" />
   <div class="slide-modal flex f_centered">
     <div class="wrap-enter-form">
       <label for="input_nickname">Ваш никнейм:</label>

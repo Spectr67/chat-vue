@@ -63,6 +63,7 @@ export default {
           :current-nickname="currentNickname"
           :nicknames="nicknames"
           @ping="pingingNickname = $event"
+          @changeCurrentnickname="this.currentNickname = $event"
         />
       </div>
 

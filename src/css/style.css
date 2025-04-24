@@ -36,8 +36,8 @@
 .light .wrap-send-message > [type='text'] {
   /* text-indent: 21px; */
 
-  border-top: 1px solid #fffa;
-  background-color: #fff4;
+  border-top: 1px solid #fff6;
+  background-color: #fff8;
   transition: all 0.3s ease;
   text-shadow: inherit;
 }
@@ -58,22 +58,22 @@
   background-color: #fff8;
 }
 .light .wrap-send-message > [type='text']:focus {
-  border-top: 1px solid #fff8;
-  background-color: #fff6;
+  border-top: 1px solid #fff6;
+  background-color: #fff8;
 }
 .light .wrap-send-message > [type='text']:active {
-  border-top: 1px solid #fff4;
-  background-color: #fffa;
+  border-top: 1px solid #fff6;
+  background-color: #fff8;
 }
 
 .light .wrap-send-message > [type='submit']:hover {
   color: hsl(180, 30%, 45%);
 }
 .light .wrap-send-message > [type='submit']:focus {
-  color: hsl(180, 30%, 30%);
+  color: hsl(180, 30%, 45%);
 }
 .light .wrap-send-message > [type='submit']:active {
-  color: hsl(180, 30%, 60%);
+  color: hsl(180, 30%, 45%);
 }
 
 .light .slide-modal {

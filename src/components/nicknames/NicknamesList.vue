@@ -2,7 +2,7 @@
 export default {
   props: ['nicknames', 'currentNickname'],
 
-  emits: ['ping', 'changeCurrentnickname'],
+  emits: ['ping', 'change-current-nickname'],
 }
 </script>
 
@@ -13,7 +13,7 @@ export default {
         class="wrap-span"
         :class="{ highlight: nickname === currentNickname }"
         @click="$emit('ping', nickname)"
-        @contextmenu.prevent="$emit('changeCurrentnickname', nickname)"
+        @contextmenu.prevent="$emit('change-current-nickname', nickname)"
       >
         <span>{{ nickname }} </span>
       </div>

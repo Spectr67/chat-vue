@@ -1,6 +1,13 @@
 <script>
 import checkWord from '@/functions/checkWord'
 
+const nextId = () => Math.trunc(Math.random() * 1000000000)
+const initMessage = () => ({
+  id: nextId,
+  author: '',
+  text: '',
+})
+
 export default {
   props: ['currentNickname', 'pingingNickname'],
 
@@ -8,8 +15,7 @@ export default {
 
   data() {
     return {
-      messageText: '',
-      lastMessageText: '',
+      message: initMessage(),
     }
   },
 
@@ -27,17 +33,13 @@ export default {
           this.messageText = ''
           return
         }
-        if (this.messageText === this.lastMessageText) {
-          return
-        }
+
         const message = {
           author: this.currentNickname,
           text: `${this.dog}${this.pingingNickname} ${this.messageText}`,
         }
         this.$emit('message-submitted', message)
-        this.$emit('reset-pinging-nickname')
-        this.lastMessageText = this.messageText
-        this.messageText = ''
+        this.$emit('reset-pinging-nickname', '')
       }
     },
   },
@@ -52,11 +54,9 @@ export default {
       }}</span>
 
       <input
-        :value="messageText"
-        @input="messageText = $event.target.value"
-        @keydown.backspace="messageText || $emit('reset-pinging-nickname')"
+        v-model="message.text"
+        @keydown.backspace="message.text || $emit('reset-pinging-nickname')"
         @keydown.enter="handleSendMessage"
-        type="text"
         spellcheck="false"
         id="input_msg"
       />

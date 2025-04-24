@@ -1,5 +1,9 @@
 <script>
+import MessageItem from './MessageItem.vue'
+
 export default {
+  components: { MessageItem },
+
   props: ['messages'],
 
   watch: {
@@ -16,7 +20,7 @@ export default {
       this.$nextTick(() => {
         const container = this.$refs.messagesContainer
         if (container) {
-          container.scroll({ top: 1000000, behavior: 'smooth' })
+          container.scroll({ top: 1000000000, behavior: 'smooth' })
         }
       })
     },
@@ -28,12 +32,11 @@ export default {
   <div class="left">
     <div class="wrap-chat-flow">
       <div class="chat-flow" spellcheck="false" ref="messagesContainer">
-        <template v-for="(message, index) in messages" :key="index">
-          <span class="msg-line">
-            <b>[{{ message.author }}]:</b> {{ message.text }}
-          </span>
-          <br />
-        </template>
+        <MessageItem
+          v-for="(message, index) in messages"
+          :key="index"
+          :message="message"
+        />
       </div>
     </div>
   </div>

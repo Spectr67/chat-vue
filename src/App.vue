@@ -53,18 +53,18 @@ export default {
         />
 
         <NicknamesList
-          :current-nickname="currentNickname"
           :nicknames="nicknames"
           @ping="pingingNickname = $event"
-          @changeCurrentnickname="this.currentNickname = $event"
+          :current-nickname="currentNickname"
+          @change-current-nickname="currentNickname = $event"
         />
       </div>
 
       <MessageSubmitter
         :current-nickname="currentNickname"
-        :pinging-nickname="pingingNickname"
         @message-submitted="messages.push($event)"
-        @reset-pinging-nickname="pingingNickname = ''"
+        :pinging-nickname="pingingNickname"
+        @reset-pinging-nickname="pingingNickname = $event"
       />
 
       <NicknameSubmitter @nickname-submitted="currentNickname = $event" />

@@ -38,18 +38,7 @@ export default {
         this.$emit('reset-pinging-nickname')
         this.lastMessageText = this.messageText
         this.messageText = ''
-
-        this.scrollToBottom()
       }
-    },
-
-    scrollToBottom() {
-      this.$nextTick(() => {
-        const container = this.$refs.messagesContainer
-        if (container) {
-          container.scrollTop = container.scrollHeight
-        }
-      })
     },
   },
 }

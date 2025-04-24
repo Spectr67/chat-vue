@@ -34,24 +34,17 @@ export default {
         text: `${newValue} вошел(ла) в чат.`,
       })
     },
-
-    nicknames: {
-      deep: true,
-      handler(newValue) {
-        console.log(newValue)
-      },
-    },
   },
 }
 </script>
 
 <template>
-  {{ currentNickname }}
+  <!-- {{ currentNickname }}
   {{ messages }}
-  {{ pingingNickname }}
+  {{ pingingNickname }} -->
   <div class="main flex f_centered light">
     <div class="chat">
-      <UiHeader @click="nicknames.push('yo!')" />
+      <UiHeader />
 
       <div class="content flex f_tile">
         <MessagesList

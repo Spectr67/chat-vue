@@ -3,8 +3,11 @@ export default {
   props: ['messages'],
 
   watch: {
-    messages() {
-      this.scrollToBottom()
+    messages: {
+      deep: true,
+      handler() {
+        this.scrollToBottom()
+      },
     },
   },
 
@@ -13,7 +16,7 @@ export default {
       this.$nextTick(() => {
         const container = this.$refs.messagesContainer
         if (container) {
-          container.scrollTop = container.scrollHeight
+          container.scroll({ top: 1000000, behavior: 'smooth' })
         }
       })
     },
